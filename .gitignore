@@ -1,0 +1,57 @@
+# Raiz do projeto
+.env
+*.env
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.db
+*.log
+.DS_Store
+Thumbs.db
+
+# Diretório de uploads (gerado em runtime)
+uploads/
+media/
+images/
+
+# Ambiente virtual Python
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Alembic
+alembic/versions/
+
+# Node.js (frontend)
+node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/.cache/
+frontend/.env.local
+frontend/.env.production
+frontend/.eslintcache
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker (se usar volumes locais)
+volumes/
+pgdata/
+
+# Build
+dist/
+build/
+coverage/
+htmlcov/
+*.egg-info/
