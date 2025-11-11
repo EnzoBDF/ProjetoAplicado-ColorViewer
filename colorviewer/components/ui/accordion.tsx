@@ -14,16 +14,27 @@ function Accordion({
 
 function AccordionItem({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-b last:border-b-0", className)}
+      className={cn(
+        "transition-all duration-300 overflow-hidden rounded-2xl",
+        "border border-zinc-200 bg-white shadow-sm",
+        // 🌈 Quando aberto, aplica borda gradiente com cantos arredondados
+        "data-[state=open]:border-none data-[state=open]:p-[2px] data-[state=open]:bg-gradient-to-r data-[state=open]:from-pink-500 data-[state=open]:via-purple-500 data-[state=open]:to-cyan-400",
+        className
+      )}
       {...props}
-    />
-  )
+    >
+      {/* camada interna branca que mantém o arredondamento */}
+      <div className="bg-white rounded-[14px]">{children}</div>
+    </AccordionPrimitive.Item>
+  );
 }
+
 
 function AccordionTrigger({
   className,

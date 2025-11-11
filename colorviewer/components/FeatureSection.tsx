@@ -1,28 +1,21 @@
-"use client";
-import Image from "next/image";
+import BlobClipPath from "@/components/ui/BlobClipPath";
+import BlobImage from "@/components/ui/BlobImage";
 
 export default function FeatureSection() {
   return (
     <section className="flex flex-col md:flex-row items-center justify-center gap-12 px-6 py-20 max-w-6xl mx-auto">
       {/* Imagem em formato orgânico */}
-      <div className="relative w-[300px] h-[300px] flex-shrink-0 overflow-hidden">
-        <div className="absolute inset-0 [clip-path:url(#blobShape)]">
-          <Image
-            src="/images/lens.jpg"
-            alt="Imagem principal"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Definição do formato blob */}
-        <svg width="0" height="0">
-          <defs>
-            <clipPath id="blobShape" clipPathUnits="objectBoundingBox">
-              <path d="M0.86,0.07 C0.96,0.15,0.99,0.36,0.95,0.55 C0.91,0.74,0.81,0.9,0.63,0.96 C0.44,1,0.19,0.92,0.09,0.73 C-0.02,0.54,0.03,0.24,0.21,0.1 C0.39,-0.03,0.76,-0.01,0.86,0.07 Z" />
-            </clipPath>
-          </defs>
-        </svg>
+      <div className="relative w-[300px] h-[300px] flex-shrink-0">
+        <BlobImage
+          src="/images/lens.jpg"
+          alt="Imagem principal"
+          clipPathId="blobShape"
+          className="absolute inset-0 w-full h-full"
+        />
+        <BlobClipPath
+          id="blobShape"
+          path="M0.86,0.07 C0.96,0.15,0.99,0.36,0.95,0.55 C0.91,0.74,0.81,0.9,0.63,0.96 C0.44,1,0.19,0.92,0.09,0.73 C-0.02,0.54,0.03,0.24,0.21,0.1 C0.39,-0.03,0.76,-0.01,0.86,0.07 Z"
+        />
       </div>
 
       {/* Texto e botão */}

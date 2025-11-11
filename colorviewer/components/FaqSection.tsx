@@ -1,11 +1,8 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
+import FaqItem from "@/components/ui/FaqItem";
+import { faqs } from "@/content/faq";
 
 export default function FaqSection() {
   return (
@@ -16,51 +13,9 @@ export default function FaqSection() {
 
       <div className="w-full max-w-2xl">
         <Accordion type="single" collapsible className="space-y-4">
-          {/* Pergunta 1 */}
-          <AccordionItem
-            value="item-1"
-            className="rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
-          >
-            <AccordionTrigger className="text-base font-medium px-6 py-4 rounded-2xl hover:no-underline transition-all data-[state=open]:text-indigo-600 data-[state=open]:border-none">
-              Lorem ipsum dolor sit amet.
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-4 text-zinc-600 text-sm leading-relaxed border-t border-gray-100">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              bibendum eget metus faucibus sagittis. Vivamus quis leo vel magna
-              gravida tincidunt. Duis auctor felis turpis, at placerat sem porta
-              ut. Nullam faucibus, libero ac condimentum ultricies, urna ex
-              feugiat tellus, ultricies ultricies eros magna sit amet libero.
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Pergunta 2 */}
-          <AccordionItem
-            value="item-2"
-            className="rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
-          >
-            <AccordionTrigger className="text-base font-medium px-6 py-4 rounded-2xl hover:no-underline transition-all data-[state=open]:text-indigo-600">
-              Lorem ipsum dolor sit amet.
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-4 text-zinc-600 text-sm leading-relaxed border-t border-gray-100">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              bibendum eget metus faucibus sagittis. Vivamus quis leo vel magna
-              gravida tincidunt.
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Pergunta 3 */}
-          <AccordionItem
-            value="item-3"
-            className="rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
-          >
-            <AccordionTrigger className="text-base font-medium px-6 py-4 rounded-2xl hover:no-underline transition-all data-[state=open]:text-indigo-600">
-              Lorem ipsum dolor sit amet.
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-4 text-zinc-600 text-sm leading-relaxed border-t border-gray-100">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              aliquet ligula non metus rhoncus, nec malesuada libero porttitor.
-            </AccordionContent>
-          </AccordionItem>
+          {faqs.map((f) => (
+            <FaqItem key={f.id} id={f.id} question={f.question} answer={f.answer} />
+          ))}
         </Accordion>
       </div>
     </section>
