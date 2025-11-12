@@ -5,7 +5,7 @@ export default function PricingSection() {
   return (
     <section className="relative py-24 px-6 text-center bg-white overflow-hidden">
       {/* Gradiente de fundo */}
-      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-indigo-500 opacity-90 -z-10" />
+      <div className="absolute inset-0 bg-linear-to-r from-fuchsia-500 via-purple-500 to-indigo-500 opacity-90 -z-10" />
 
       {/* Conteúdo */}
       <h2 className="text-white text-2xl md:text-3xl font-semibold uppercase tracking-wide mb-14">

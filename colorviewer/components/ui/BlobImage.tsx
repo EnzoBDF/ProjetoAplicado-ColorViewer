@@ -12,7 +12,7 @@ export default function BlobImage({
   className?: string;
 }) {
   return (
-    <div className={`overflow-hidden ${className ?? ""} [clip-path:url(#${clipPathId})]`}>
+    <div className={`overflow-hidden h-fit w-fit ${className ??""} `}>
       <Image src={src} alt={alt} fill className="object-cover" />
     </div>
   );

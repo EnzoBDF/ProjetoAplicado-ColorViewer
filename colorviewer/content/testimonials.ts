@@ -20,6 +20,7 @@ export const testimonials: Testimonial[] = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacinia felis sit amet dapibus posuere. Vivamus accumsan vehicula dictum. Nullam porttitor placerat.",
     image: "/avatar-mulher.avif",
   },
+  
 ];
 
 

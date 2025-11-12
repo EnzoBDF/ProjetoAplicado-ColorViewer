@@ -10,8 +10,8 @@ export default function FeatureItem({
   icon?: "lock";
 }) {
   return (
-    <div className="flex items-start text-left gap-4 p-10 border-[2px] border-[#6D6AEB] rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:border-purple-400">
-      <div className="flex-shrink-0 bg-[purple-100] text-[#6D6AEB] p-3 rounded-full">
+    <div className="flex items-start text-left gap-4 p-10 border border-[#6D6AEB] shadow-lg rounded-2xl  hover:shadow-md transition-all duration-300 hover:border-purple-400">
+      <div className="shrink-0 bg-[purple-100] text-[#6D6AEB] p-3 rounded-full">
         {icon === "lock" ? <Lock className="w-6 h-6" /> : null}
       </div>
       <div>
