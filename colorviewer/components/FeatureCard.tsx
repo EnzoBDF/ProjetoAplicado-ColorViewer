@@ -4,7 +4,7 @@ import BlobImage from "@/components/ui/BlobImage";
 
 export default function FeatureCard() {
   return (
-    <section className="relative flex items-center justify-center py-16 px-6 bg-zinc-50 overflow-hidden">
+    <section className="relative flex items-center justify-center py-12 px-6 overflow-hidden">
       {/* Fundo orgânico */}
 
 
