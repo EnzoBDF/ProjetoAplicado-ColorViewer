@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { Label } from "@radix-ui/react-select";
 
 const NAV = [
   { href: "/", label: "Início", exact: true },
@@ -10,6 +11,10 @@ const NAV = [
   { href: "/printers", label: "Impressoras" },
   { href: "/settings", label: "Configurações" },
   { href: "/login", label: "Login" },
+  { href: "/analytics", label: "Analytics"},
+  { href: "/pricing", label: "Planos"},
+  { href: "/history", label: "Histórico"},
+  { href: "/register", label: "Cadastro"},
 ];
 
 export default function Header() {

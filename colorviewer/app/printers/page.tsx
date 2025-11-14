@@ -30,6 +30,19 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+
+
 type PrinterInfo = {
   id: string;
   name: string;
@@ -118,12 +131,144 @@ export default function PrintersPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Button variant="outline" size="sm" className="gap-2">
-                <Plus className="h-4 w-4" />
-                Adicionar impressora
-              </Button>
-            </div>
+            <Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline" size="sm" className="gap-2">
+      <Plus className="h-4 w-4" />
+      Adicionar impressora
+    </Button>
+  </DialogTrigger>
+
+  <DialogContent className="max-w-xl">
+    <DialogHeader>
+      <DialogTitle>Cadastrar nova impressora</DialogTitle>
+      <DialogDescription className="text-xs">
+        Preencha os dados principais da máquina. Depois esses valores serão
+        usados para estimar o custo de impressão por página.
+      </DialogDescription>
+    </DialogHeader>
+
+    <div className="space-y-4 py-2 text-sm">
+      {/* Dados básicos */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-zinc-600">Nome da impressora</p>
+          <Input placeholder="Ex.: Impressora 5" />
+        </div>
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-zinc-600">Modelo</p>
+          <Input placeholder="Ex.: HP Color Pro 9200" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-zinc-600">Localização</p>
+          <Input placeholder="Ex.: Setor Gráfico - Sala 03" />
+        </div>
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-zinc-600">Endereço IP</p>
+          <Input placeholder="Ex.: 192.168.0.24" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-zinc-600">Perfil</p>
+          <Select defaultValue="CMYK">
+            <SelectTrigger className="h-9 text-xs">
+              <SelectValue placeholder="Selecione" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="CMYK">CMYK</SelectItem>
+              <SelectItem value="CMY">CMY</SelectItem>
+              <SelectItem value="MONO">Monocromática</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex items-center gap-2 mt-5">
+          <Checkbox id="default" />
+          <label htmlFor="default" className="text-[11px] text-zinc-600">
+            Definir esta impressora como padrão para novos jobs
+          </label>
+        </div>
+      </div>
+
+      <Separator />
+
+      {/* Custos básicos por peça/cor */}
+      {/* Peças & custos básicos */}
+<div className="space-y-2">
+  <p className="text-xs font-semibold text-zinc-700">
+    Peças & custos básicos
+  </p>
+  <p className="text-[11px] text-zinc-500">
+    Informe o custo e o rendimento estimado de cada cartucho/peça. 
+    O ColorViewer usará isso para calcular o custo por página.
+  </p>
+
+  {/* AGORA EM GRID 2x2 */}
+  <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3">
+    {["C", "M", "Y", "K"].map((channel) => (
+      <div
+        key={channel}
+        className="space-y-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2"
+      >
+        <span className="text-xs font-semibold text-zinc-600">
+          {channel}
+        </span>
+
+        <div className="grid grid-cols-1 gap-2">
+          <div className="space-y-1">
+            <p className="text-[11px] text-zinc-500">Custo da peça (R$)</p>
+            <Input
+              type="number"
+              step="0.01"
+              min="0"
+              placeholder="Ex.: 350,00"
+              className="h-8 text-xs"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-[11px] text-zinc-500">
+              Rendimento (páginas)
+            </p>
+            <Input
+              type="number"
+              min="1"
+              placeholder="Ex.: 5000"
+              className="h-8 text-xs"
+            />
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p className="text-[11px] text-zinc-500">
+    Para impressoras monocromáticas, você pode preencher apenas o canal K.
+  </p>
+</div>
+
+    </div>
+
+    <DialogFooter className="flex justify-end gap-2">
+      <Button variant="outline" size="sm">
+        Cancelar
+      </Button>
+      <Button
+        size="sm"
+        className="bg-[#6D6AEB] hover:bg-[#6c6aebcb] text-white"
+      >
+        Salvar impressora
+      </Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+
+
           </div>
 
           <Separator className="mt-2" />
@@ -241,7 +386,7 @@ export default function PrintersPage() {
                       <span className="font-medium text-zinc-600">
                         Modo de otimização
                       </span>
-                      <div className="space-y-2 text-[11px]">
+                      <div className="space-y-2 text-[11px] mt-2">
                         <LabelSwitch
                           label="Priorizar economia de tinta"
                           defaultChecked={false}

@@ -96,7 +96,7 @@ const historyMock: HistoryItem[] = [
 
 export default function HistoryPage() {
   return (
-    <div className="flex min-h-[calc(100vh-72px)] bg-zinc-50 text-zinc-900">
+    <div className="flex min-h-[calc(100vh-72px)] bg-zinc-50 text-zinc-900 ">
       {/* SIDEBAR */}
       <aside className="hidden md:flex w-60 flex-col border-r border-zinc-200 bg-white/80 backdrop-blur">
         <div className="px-4 py-6">

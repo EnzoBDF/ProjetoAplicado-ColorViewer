@@ -181,7 +181,7 @@ export default function MainColorimetryPage() {
               {/* Área de upload */}
               <div className="flex flex-col gap-3">
                 <div className="rounded-2xl border border-dashed border-zinc-300 bg-zinc-50/70 hover:bg-zinc-50 transition flex flex-col items-center justify-center h-64 cursor-pointer relative overflow-hidden">
-                  <div className="absolute inset-0 rounded-2xl pointer-events-none border-[3px] border-transparent [background:linear-gradient(135deg,#ec4899,#6366f1,#06b6d4)_border-box] [mask:linear-gradient(#000_0_0)_padding-box,linear-gradient(#000_0_0)] [mask-composite:exclude]" />
+                  <div className="absolute inset-0 rounded-2xl pointer-events-none border-[3px] border-transparent  [mask-composite:exclude]" />
                   <UploadCloud className="h-9 w-9 text-[#6D6AEB] mb-2 relative z-10" />
                   <p className="text-sm font-medium relative z-10">
                     Solte a imagem aqui

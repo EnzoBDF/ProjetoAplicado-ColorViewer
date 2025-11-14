@@ -8,6 +8,8 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import GoogleIcon from "@mui/icons-material/Google";
+
 
 export default function Login() {
   return (
@@ -17,7 +19,7 @@ export default function Login() {
   ">
       <Card className="w-[380px] shadow-xl rounded-2xl bg-white backdrop-blur border">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-semibold text-zinc-800">
+          <CardTitle className="text-center text-2xl font-semibold text-[#6D6AEB]">
             Login
           </CardTitle>
         </CardHeader>
@@ -46,7 +48,9 @@ export default function Login() {
           </div>
 
           <div className="rounded-lg p-0.5 bg-linear-to-r from-pink-500 via-purple-500 to-cyan-400 transition-shadow hover:shadow-[0_0_22px_rgba(109,106,235,0.25)] w-full">
+          
             <Button className="w-full rounded-[10px] border-transparent bg-white text-zinc-700 hover:bg-white hover:cursor-pointer">
+            <GoogleIcon className="h-5 w-5"/>
               Entrar com conta Google
 
             </Button>
@@ -63,7 +67,7 @@ export default function Login() {
           </div>
 
 
-          {/* Exemplo de alerta (opcional) */}
+ 
           {/*  <Alert variant="destructive">
             <AlertTitle>Erro</AlertTitle>
             <AlertDescription>Email ou senha incorretos.</AlertDescription>
