@@ -41,7 +41,7 @@ import {
 } from "@/components/ui/dialog";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-
+import Sidebar from "@/components/layout/Sidebar";
 
 type PrinterInfo = {
   id: string;
@@ -93,28 +93,7 @@ export default function PrintersPage() {
 
   return (
     <div className="flex min-h-[calc(100vh-72px)] bg-zinc-50 text-zinc-900">
-      {/* SIDEBAR */}
-      <aside className="hidden md:flex w-60 flex-col border-r border-zinc-200 bg-white/80 backdrop-blur">
-        <div className="px-4 py-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
-            Navegação
-          </p>
-        </div>
-
-        <nav className="flex-1 px-2 space-y-1">
-          <SidebarItem icon={Palette} label="Colorimetria" />
-          <SidebarItem icon={Printer} label="Impressoras" active />
-          <SidebarItem icon={History} label="Histórico" />
-          <SidebarItem icon={FileText} label="Resumos" />
-        </nav>
-
-        <div className="px-4 py-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
-          <span>Plano Premium</span>
-          <Button variant="ghost" size="icon" className="h-7 w-7">
-            <Settings2 className="h-4 w-4" />
-          </Button>
-        </div>
-      </aside>
+   <Sidebar current="impressoras"/>
 
       {/* CONTEÚDO PRINCIPAL */}
       <main className="flex-1 px-6 py-6 md:px-10 md:py-8 space-y-6">
@@ -323,7 +302,7 @@ export default function PrintersPage() {
             <CardHeader>
               <div className="flex items-start justify-between gap-3">
                 <div className="space-y-1">
-                  <CardTitle className="text-lg flex items-center gap-2">
+                  <CardTitle className="text-lg flex items-center gap-2 text-[#6D6AEB]">
                     {selected.name}
                     <PrinterStatusBadge status={selected.status} />
                   </CardTitle>
@@ -411,13 +390,13 @@ export default function PrintersPage() {
                       <span className="font-medium text-zinc-600">
                         Endereço de rede
                       </span>
-                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1">
+                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1 mt-2">
                         <p className="text-sm font-mono">192.168.0.24</p>
                         <p className="text-[11px] text-zinc-500">
                           DHCP reservado · Porta 9100
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-2 mt-3">
                         <Wifi className="h-4 w-4 text-emerald-500" />
                         <span className="text-[11px] text-emerald-700">
                           Conectada à rede · Latência média 4ms
@@ -429,7 +408,7 @@ export default function PrintersPage() {
                       <span className="font-medium text-zinc-600">
                         Fila de impressão
                       </span>
-                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1">
+                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1 mt-2">
                         <p className="text-sm">Nenhum trabalho pendente</p>
                         <p className="text-[11px] text-zinc-500">
                           Último trabalho concluído há 12 minutos.
@@ -449,7 +428,7 @@ export default function PrintersPage() {
                       <span className="font-medium text-zinc-600">
                         Estado geral
                       </span>
-                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1">
+                      <div className="rounded-xl bg-zinc-50 border border-zinc-200 px-3 py-2 space-y-1 mt-2">
                         <p className="flex items-center gap-2 text-sm">
                           <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                           Sem alertas críticos no momento.
@@ -464,7 +443,7 @@ export default function PrintersPage() {
                       <span className="font-medium text-zinc-600">
                         Ações rápidas
                       </span>
-                      <div className="space-y-2">
+                      <div className="space-y-2 mt-2">
                         <Button variant="outline" size="sm" className="w-full">
                           Limpar cabeças de impressão
                         </Button>
@@ -502,7 +481,7 @@ export default function PrintersPage() {
                 </span>
               </div>
 
-              <Button variant="ghost" size="sm" className="text-[11px]">
+              <Button variant="ghost" size="sm" className="text-[11px] text-red-400 hover:text-red-500">
                 Remover impressora
               </Button>
             </CardFooter>

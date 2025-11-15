@@ -15,6 +15,16 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { ManageMembersDialog, WorkspaceMember } from "@/components/ManageMembersDialog";
+
+const mockMembers: WorkspaceMember[] = [
+  { id: 1, name: "Ana Souza", email: "ana@graficaexemplo.com", role: "admin",    status: "ativo" },
+  { id: 2, name: "Carlos Lima", email: "carlos@graficaexemplo.com", role: "operador", status: "ativo" },
+  { id: 3, name: "João Santos", email: "joao@graficaexemplo.com",  role: "viewer",  status: "pendente" },
+];
+
+
+
 
 import {
   Palette,
@@ -30,6 +40,7 @@ import {
   Trash2,
   ShieldCheck,
 } from "lucide-react";
+import Sidebar from "@/components/layout/Sidebar";
 
 type SidebarItemProps = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -59,29 +70,7 @@ export default function SettingsPage() {
   return (
     <div className="flex min-h-[calc(100vh-72px)] bg-zinc-50 text-zinc-900">
       {/* SIDEBAR */}
-      <aside className="hidden md:flex w-60 flex-col border-r border-zinc-200 bg-white/80 backdrop-blur">
-        <div className="px-4 py-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
-            Navegação
-          </p>
-        </div>
-
-        <nav className="flex-1 px-2 space-y-1">
-          <SidebarItem icon={Palette} label="Colorimetria" />
-          <SidebarItem icon={Printer} label="Impressoras" />
-          <SidebarItem icon={History} label="Histórico" />
-          <SidebarItem icon={FileText} label="Analytics" />
-          <SidebarItem icon={Settings2} label="Configurações" active />
-        </nav>
-
-        <div className="px-4 py-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
-          <span>Plano Pro</span>
-          <Button variant="ghost" size="icon" className="h-7 w-7">
-            <ShieldCheck className="h-4 w-4" />
-          </Button>
-        </div>
-      </aside>
-
+      <Sidebar current="configuracoes" />
       {/* CONTEÚDO PRINCIPAL */}
       <main className="flex-1 px-6 py-6 md:px-10 md:py-8 space-y-6">
         {/* Header */}
@@ -237,13 +226,25 @@ export default function SettingsPage() {
               </CardContent>
 
               <CardFooter className="flex items-center justify-between text-[11px] text-zinc-500">
-                <span>
-                  Alterações aqui afetam toda a equipe conectada a este workspace.
-                </span>
-                <Button variant="outline" size="sm" className="text-xs">
-                  Gerenciar membros
-                </Button>
-              </CardFooter>
+  <span>
+    Alterações aqui afetam toda a equipe conectada a este workspace.
+  </span>
+
+  <ManageMembersDialog
+    members={mockMembers}
+    // aqui no futuro você liga com o backend:
+    onRoleChange={(id, role) => {
+      console.log("trocar função", id, role);
+    }}
+    onRemove={(id) => {
+      console.log("remover membro", id);
+    }}
+    onInvite={(data) => {
+      console.log("convidar", data);
+    }}
+  />
+</CardFooter>
+
             </Card>
           </div>
 

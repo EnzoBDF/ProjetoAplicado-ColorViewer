@@ -26,6 +26,8 @@ import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { ColorimetryQuickGuideDialog } from "@/components/ColorimetryQuickGuideDialog";
+import Sidebar from "@/components/layout/Sidebar";
 
 import {
   Palette,
@@ -41,27 +43,7 @@ export default function MainColorimetryPage() {
   return (
     <div className="flex min-h-[calc(100vh-72px)] bg-zinc-50 text-zinc-900">
       {/* SIDEBAR */}
-      <aside className="hidden md:flex w-60 flex-col border-r border-zinc-200 bg-white/80 backdrop-blur">
-        <div className="px-4 py-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
-            Navegação
-          </p>
-        </div>
-
-        <nav className="flex-1 px-2 space-y-1">
-          <SidebarItem icon={Palette} label="Colorimetria" active />
-          <SidebarItem icon={Printer} label="Impressoras" />
-          <SidebarItem icon={History} label="Histórico" />
-          <SidebarItem icon={FileText} label="Resumos" />
-        </nav>
-
-        <div className="px-4 py-4 border-t border-zinc-100 flex items-center justify-between text-xs text-zinc-500">
-          <span>Plano Premium</span>
-          <Button variant="ghost" size="icon" className="h-7 w-7">
-            <Settings2 className="h-4 w-4" />
-          </Button>
-        </div>
-      </aside>
+      <Sidebar current="colorimetria" />
 
       {/* CONTEÚDO PRINCIPAL */}
       <main className="flex-1 px-6 py-6 md:px-10 md:py-8 space-y-6">
@@ -82,9 +64,8 @@ export default function MainColorimetryPage() {
               <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200">
                 Sessão ativa
               </Badge>
-              <Button variant="outline" size="sm">
-                Ver guia rápido
-              </Button>
+              <ColorimetryQuickGuideDialog />
+
             </div>
           </div>
 
